@@ -1,0 +1,110 @@
+﻿@using Entidades;
+@using Negocios;
+@model List<E_rfc>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BaseDeDatos</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #0d3027;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/Home/Index">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Logo_del_Gobierno_de_M%C3%A9xico_%282018%29.png" alt="" width="170" height="50" class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="/Home/Iniciar">Crear RFC</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white disabled" href="/Home/irBD" style="opacity: 0.5; pointer-events: none;">Mostrar registros</a>
+                    </li>
+                    <li class="nav-item">
+                        <form class="d-flex" role="search" action="/Home/Buscar" method="post">
+                            <input class="form-control me-2" name="textoBusqueda" type="search" placeholder="Ingresa-letras-números" aria-label="Buscar">
+                            <button class="btn btn-success" type="submit">Buscar</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="display-1 text-center">Base de datos</h1>
+        <br />
+
+        @if (TempData["mensaje"] != null)
+        {
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="16" height="16" role="img" aria-label="Success:">
+                    <use xlink:href="#check-circle-fill" />
+                </svg>
+                <div>
+                    @TempData["mensaje"]
+                </div>
+            </div>
+        }
+
+        @if (TempData["error"] != null)
+        {
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="16" height="16" role="img" aria-label="Danger:">
+                    <use xlink:href="#exclamation-triangle-fill" />
+                </svg>
+                <div>
+                    @TempData["error"]
+                </div>
+            </div>
+        }
+        <div class="container">
+            <h3 class="display-6 text-lg-end">Total de registros activos: @ViewBag.TotalActivos</h3>
+        </div>
+
+        <div class="container">
+            <h3 class="display-6 text-lg-end">Total de registros activos:@Model.Count</h3>
+        </div>
+
+        <table class="table table-bordered border-success table-hover text-center">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>RFC</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (E_rfc rfc in Model)
+                {
+                    N_rfc negocio = new N_rfc();
+                    <tr>
+                        <td>@rfc.idUsuario</td>
+                        <td>@rfc.nombre @rfc.apellidoPa @rfc.apellidoMa</td>
+                        <td>@rfc.fechaNac.ToString("dd/MMM/yyyy").ToUpper().Replace(".", "")</td>
+                        <td>@negocio.RFC(rfc)</td>
+                        <td>
+                            <a href="/Home/IrEditar?idUsuario=@rfc.idUsuario" class="btn btn-outline-primary">Editar</a>
+                            <a href="/Home/IrEliminar?idUsuario=@rfc.idUsuario" class=" btn btn-outline-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Inicio</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #0d3027;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/Home/Index">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Logo_del_Gobierno_de_M%C3%A9xico_%282018%29.png" alt="" width="170" height="50" class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="/Home/Iniciar">Crear RFC</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/Home/irBD">Mostrar registros</a>
+                    </li>
+                    <li class="nav-item">
+                        <form class="d-flex" role="search" action="/Home/Buscar" method="post">
+                            <input class="form-control me-2" name="textoBusqueda" type="search" placeholder="Ingresa-letras-números" aria-label="Buscar">
+                            <button class="btn btn-success" type="submit">Buscar</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br />
+    <div class="container">
+
+        <div class="container">
+            <h3 class="display-4 text-center">Genera tu Registro Federal de Contribuyentes</h3>
+            <h3 class="display-6 text-center">Solo necesitarás:</h3>
+            <br />
+
+            <div class="container">
+                <ul>
+                    <li class="h2">Nombre completo en mayúsculas sin acentos ni diéresis</li>
+                    <li class="h2">Fecha de nacimiento</li>
+                </ul>
+            </div>
+            <br /><br />
+
+            <p>
+                <a class="btn btn-dark" style=" background-color:#0d3027;" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    ¿Que es el RFC?
+                </a>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <p>El Registro Federal de Contribuyentes, mejor conocido como RFC, es una clave compuesta alfanumérica que el gobierno utiliza para identificar a las personas físicas y morales que practican alguna actividad económica en nuestro país.</p>
+                    <p>Es un elemento fundamental para emprender individualmente y crear empresas en sociedad.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
