@@ -87,7 +87,7 @@
                     N_rfc negocio = new N_rfc();
                     <tr>
                         <td>@rfc.idUsuario</td>
-                        <td>@rfc.nombre</td>
+                        <td>@rfc.nombre @rfc.apellidoPa @rfc.apellidoMa</td>
                         <td>@rfc.fechaNac.ToString("dd/MMM/yyyy").ToUpper().Replace(".", "")</td>
                         <td>@negocio.RFC(rfc)</td>
                         <td>
