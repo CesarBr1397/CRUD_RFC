@@ -231,7 +231,6 @@ namespace Datos
                     rfc.nombre = reader["nombre"].ToString();
                     rfc.apellidoPa = reader["apellidoPa"].ToString();
                     rfc.apellidoMa = reader["apellidoMa"].ToString();
-                    rfc.fechaNac = Convert.ToDateTime(reader["fechaNac"]);
 
                     lista.Add(rfc);
                 }
